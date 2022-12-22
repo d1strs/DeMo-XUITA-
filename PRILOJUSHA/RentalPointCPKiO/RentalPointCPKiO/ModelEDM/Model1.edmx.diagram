@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4dae3f17aab4e279f244e29aa9afd9e" Name="Diagram1">
+        <EntityTypeShape EntityType="DemoModel.Clients" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Orders" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.OrdersOfServices" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Roles" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Services" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemoModel.Staff" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="DemoModel.FK_Orders_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_OrdersOfServices_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_OrdersOfServices_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="DemoModel.FK_Staff_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

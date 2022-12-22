@@ -1,0 +1,120 @@
+﻿<Window x:Class="RentalPointCPKiO.windows.ProdavecPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RentalPointCPKiO.windows"
+        mc:Ignorable="d"
+        xmlns:model ="clr-namespace:RentalPointCPKiO.ModelEDM"
+        d:DataContext="{d:DesignInstance Type=model:Staff}"
+        Title="ProdavecPage" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="DarkSeaGreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Background="DarkSeaGreen">
+            <Image Name="IconStaff" Source="{Binding Image}" Width="70"/>
+            <TextBlock Text="|" VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0 0 0 5"/>
+            <TextBlock Name="fioStaff" VerticalAlignment="Center" Text="{Binding FullName}" FontSize="18" Margin="10 0 0 0"/>
+            <TextBlock Text="|" VerticalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="10 0 0 5"/>
+            <TextBlock Name="PostStaff" Text="{Binding Roles.Role}" FontSize="18" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        </StackPanel>
+
+        
+        
+        <Button Name="buttonLogOut" Background="Green" FontWeight="Bold" FontSize="12" BorderThickness="0" Grid.Column="1" Grid.Row="0" Content="Log Out" Height="35" Width="55" HorizontalAlignment="Right" Margin="0 0 15 0" Click="buttonLogOut_Click">
+            <Button.Resources>
+                <Style  TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="buttonShowClients" Background="Green" FontWeight="Bold" FontSize="24" BorderThickness="0" Grid.Column="1" Grid.Row="1" Content="Show Clients" Height="40" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15 25 0 0" Click="buttonShowClients_Click">
+            <Button.Resources>
+                <Style  TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="buttonShowOrders" Background="Green" FontWeight="Bold" FontSize="24" BorderThickness="0" Grid.Column="1" Grid.Row="1" Content="Show Orders" Height="40" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15 85 0 0" Click="buttonShowOrders_Click">
+            <Button.Resources>
+                <Style  TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button Name="buttonCreateClient" Background="Green" FontWeight="Bold" FontSize="24" BorderThickness="0" Grid.Column="1" Grid.Row="1" Content="Create Client" Height="40" Width="180" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15 145 0 0">
+            <Button.Resources>
+                <Style  TargetType="Border">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <DataGrid Name="OrdersDataGrid" Grid.Row="1" Grid.Column="0" MouseLeftButtonUp="Orders_MouseLeftButtonUp" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="IdOrders" Binding="{Binding IdOrders}"/>
+                <DataGridTextColumn Header="DataCreate" Binding="{Binding DataCreateSplit}"/>
+                <DataGridTextColumn Header="TimeOrder" Binding="{Binding TimeOrderSplit}"/>
+                <DataGridTextColumn Header="IdClient" Binding="{Binding IdClient}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                <DataGridTextColumn Header="DateClose" Binding="{Binding DateCloseSplit}"/>
+                <DataGridTextColumn Header="RentalTime" Binding="{Binding RentalTime}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="buttonEdit" Click="buttonEdit_Click" Content="Settings" BorderThickness="0" Background="DarkSeaGreen">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Name="Clients" Visibility="Collapsed" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="IdClient" Binding="{Binding IdClient}"/>
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}"/>
+                <DataGridTextColumn Header="Firstname" Binding="{Binding Firstname}"/>
+                <DataGridTextColumn Header="Middlename" Binding="{Binding Middlename}"/>
+                <DataGridTextColumn Header="Passport" Binding="{Binding Passport}"/>
+                <DataGridTextColumn Header="BirtchDate" Binding="{Binding BirtchDateSplit}"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Settings" BorderThickness="0" Background="DarkSeaGreen">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="5"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</Window>
